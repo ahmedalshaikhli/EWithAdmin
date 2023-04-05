@@ -13,17 +13,20 @@ namespace API.Extensions
         public static IServiceCollection AddIdentityServices(this IServiceCollection services, 
             IConfiguration config)
         {
+
+            
             services.AddDbContext<AppIdentityDbContext>(opt =>
             {
                 opt.UseSqlite(config.GetConnectionString("IdentityConnection"));
             });
 
-            services.AddIdentityCore<AppUser>(opt => 
-            {
-                // add identity options here
-            })
-            .AddEntityFrameworkStores<AppIdentityDbContext>()
-            .AddSignInManager<SignInManager<AppUser>>();
+             var builder = services.AddIdentityCore<AppUser>();
+
+            builder = new IdentityBuilder(builder.UserType, typeof(AppRole), builder.Services);
+            builder.AddEntityFrameworkStores<AppIdentityDbContext>();
+            builder.AddSignInManager<SignInManager<AppUser>>();
+            builder.AddRoleValidator<RoleValidator<AppRole>>();
+            builder.AddRoleManager<RoleManager<AppRole>>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options => 
