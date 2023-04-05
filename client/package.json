@@ -24,6 +24,7 @@
     "bootswatch": "^5.2.3",
     "cuid": "^2.1.8",
     "font-awesome": "^4.7.0",
+    "ng2-currency-mask": "^13.0.3",
     "ngx-bootstrap": "^10.2.0",
     "ngx-spinner": "^15.0.1",
     "ngx-toastr": "^16.0.1",

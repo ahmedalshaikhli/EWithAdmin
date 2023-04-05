@@ -4,7 +4,7 @@ import { BehaviorSubject, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Basket, BasketItem, BasketTotals } from '../shared/models/basket';
 import { DeliveryMethod } from '../shared/models/deliveryMethod';
-import { Product } from '../shared/models/product';
+import { IProduct } from '../shared/models/product';
 
 @Injectable({
   providedIn: 'root'
@@ -58,7 +58,7 @@ export class BasketService {
     return this.basketSource.value;
   }
 
-  addItemToBasket(item: Product | BasketItem, quantity = 1) {
+  addItemToBasket(item: IProduct | BasketItem, quantity = 1) {
     if (this.isProduct(item)) item = this.mapProductItemToBasketItem(item);
     console.log(item);
     const basket = this.getCurrentBasketValue() ?? this.createBasket();
@@ -110,7 +110,7 @@ export class BasketService {
     return basket;
   }
 
-  private mapProductItemToBasketItem(item: Product): BasketItem {
+  private mapProductItemToBasketItem(item: IProduct): BasketItem {
     return {
       id: item.id,
       productName: item.name,
@@ -130,7 +130,7 @@ export class BasketService {
     this.basketTotalSource.next({shipping: basket.shippingPrice, total, subtotal});
   }
 
-  private isProduct(item: Product | BasketItem): item is Product {
-    return (item as Product).productBrand !== undefined;
+  private isProduct(item: IProduct | BasketItem): item is IProduct {
+    return (item as IProduct).productBrand !== undefined;
   }
 }
