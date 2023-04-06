@@ -13,6 +13,11 @@ import {CdkStepperModule} from '@angular/cdk/stepper';
 import { BasketSummaryComponent } from './basket-summary/basket-summary.component';
 import { RouterModule } from '@angular/router';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
+import { NgxGalleryModule } from '@kolkov/ngx-gallery';
+import { TabsModule} from 'ngx-bootstrap/tabs';
+import { PhotoWidgetComponent } from './components/photo-widget/photo-widget.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 
 @NgModule({
   declarations: [
@@ -21,7 +26,8 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
     OrderTotalsComponent,
     TextInputComponent,
     StepperComponent,
-    BasketSummaryComponent
+    BasketSummaryComponent,
+    PhotoWidgetComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +38,11 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
     BsDropdownModule.forRoot(),
     CdkStepperModule,
     RouterModule,
-    CurrencyMaskModule
+    CurrencyMaskModule,
+    NgxGalleryModule,
+    TabsModule.forRoot(),
+    NgxDropzoneModule,
+    ImageCropperModule
   ],
   exports: [
     PaginationModule,
@@ -47,7 +57,12 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
     StepperComponent,
     CdkStepperModule,
     BasketSummaryComponent,
-    CurrencyMaskModule
+    CurrencyMaskModule,
+    NgxGalleryModule,
+    TabsModule,
+    NgxDropzoneModule,
+    ImageCropperModule,
+    PhotoWidgetComponent
   ]
 })
 export class SharedModule { }
