@@ -1,10 +1,9 @@
-<div class="card h-100 shadow-sm" *ngIf="product">
+<!-- <div class="card h-100 shadow-sm" *ngIf="product">
 
     <div class="image position-relative" style="cursor: pointer;">
         <img src="{{product.pictureUrl}}" alt="{{product.name}}" class="img-fluid bg-info">
         <div class="d-flex align-items-center justify-content-center hover-overlay">
-            <button (click)="addItemToBasket()" class="btn btn-primary fa fa-shopping-cart me-2"></button>
-            <button routerLink="/shop/{{product.id}}" class="btn btn-primary">View</button>
+ 
         </div>
     </div>
 
@@ -17,4 +16,20 @@
         </a>
         <span class="mb-2">{{product.price | currency}}</span>
     </div>
+</div>
+ -->
+
+            <div class="card h-100" >
+                <img src="{{product.pictureUrl}}" class="card-img-top" alt="{{product.name}}">
+                <div class="card-body">
+                  <h5 class="card-title"> {{product.name}}</h5>
+                  <p class="card-text">{{product.price | currency}}</p>
+                  <div class="text-center ms-1">
+                    <button (click)="addItemToBasket()" class="btn btn-primary fa fa-shopping-cart ms-1"></button>
+                    <button routerLink="/shop/{{product.id}}" class="btn btn-primary">View</button>
+                  </div>
+                  
+
+    </div>
+
 </div>

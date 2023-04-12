@@ -17,7 +17,8 @@ import { SharedModule } from '../shared/shared.module';
     TestErrorComponent,
     NotFoundComponent,
     ServerErrorComponent,
-    SectionHeaderComponent
+    SectionHeaderComponent,
+    
   ],
   imports: [
     CommonModule,

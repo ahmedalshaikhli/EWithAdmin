@@ -1,4 +1,4 @@
-<header class="d-flex flex-row align-items-center justify-content-between p-3 px-4 mb-3 
+<!-- <header class="d-flex flex-row align-items-center justify-content-between p-3 px-4 mb-3 
     bg-white border-bottom fixed-top shadow-sm">
     <img src="/assets/images/logo.png" alt="logo" class="logo" style="max-height: 70px;" routerLink="/">
     <nav class="my-2 text-uppercase fs-4">
@@ -52,3 +52,113 @@
     </div>
 
 </header>
+ -->
+
+   <!-- Topbar Start -->
+ <!--   <div class="container-fluid border-bottom d-none d-lg-block">
+    <div class="row gx-0">
+        <div class="col-lg-4 text-center py-2">
+            <div class="d-inline-flex align-items-center">
+                <i class="bi bi-geo-alt fs-1 text-primary me-3"></i>
+                <div class="text-start">
+                    <h6 class="text-uppercase mb-1">Our Office</h6>
+                    <span>123 Street, New York, USA</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 text-center border-start border-end py-2">
+            <div class="d-inline-flex align-items-center">
+                <i class="bi bi-envelope-open fs-1 text-primary me-3"></i>
+                <div class="text-start">
+                    <h6 class="text-uppercase mb-1">Email Us</h6>
+                    <span>info@example.com</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 text-center py-2">
+            <div class="d-inline-flex align-items-center">
+                <i class="bi bi-phone-vibrate fs-1 text-primary me-3"></i>
+                <div class="text-start">
+                    <h6 class="text-uppercase mb-1">Call Us</h6>
+                    <span>+012 345 6789</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+<!-- Topbar End -->
+
+
+<!-- Navbar Start -->
+<nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm py-3 py-lg-0 px-3 px-lg-0">
+    <a href="index.html" class="navbar-brand ms-lg-5">
+        <h1 class="m-0 text-uppercase text-dark"><i class="bi bi-shop fs-1 text-primary me-3"></i>Pet Shop</h1>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto py-0">
+
+       
+            <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+            <a class="nav-item nav-link"  routerLink="/shop" routerLinkActive="active" >Shope</a>
+            <a class="nav-item nav-link" routerLink="/test-error" routerLinkActive="active">Errors</a>
+            <a *ngIf="(isAdmin$ | async)" class="nav-item nav-link" routerLink="/admin" routerLinkActive="active">Admin</a>
+            <a href="product.html" class="nav-item nav-link">About</a>
+            
+<!--             <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                <div class="dropdown-menu m-0">
+                    <a href="price.html" class="dropdown-item">Pricing Plan</a>
+                    <a href="team.html" class="dropdown-item">The Team</a>
+                    <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                    <a href="blog.html" class="dropdown-item">Blog Grid</a>
+                    <a href="detail.html" class="dropdown-item">Blog Detail</a>
+                </div>
+            </div> -->
+<!--             <a href="contact.html" class="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5">Contact <i class="bi bi-arrow-right"></i></a>
+ -->        </div>
+    </div>
+    <div class="d-flex align-items-center">
+        <a routerLink="/basket" class="position-relative">
+            <i class="fa fa-shopping-cart fa-2x me-5 text-dark"></i>
+            <div *ngIf="(basketService.basketSource$ | async) as basket" class="cart-no">
+                {{getCount(basket.items)}}
+            </div>
+        </a>
+        <ng-container *ngIf="(accountService.currentUser$ | async) === null">
+            <a routerLink="/account/login" class="btn btn-outline-secondary me-2">Login</a>
+            <a routerLink="/account/register" class="btn btn-outline-secondary me-3">Sign up</a>
+        </ng-container>
+    
+        <ng-container *ngIf="accountService.currentUser$ | async as user">
+            <div class="dropdown ms-3 me-5" style="cursor: pointer;" dropdown>
+                <a dropdownToggle class="dropdown-toggle">
+                    <strong>  اهلا وسهلا {{user.displayName}}</strong>
+                </a>
+                <ul *dropdownMenu class="dropdown-menu dropdown-menu-right">
+                    <li class="py-1">
+                        <a routerLink="/basket" class="dropdown-item">
+                            <i class="fa fa-shopping-cart me-3"></i> View basket
+                        </a>
+                    </li>
+                    <li class="py-1">
+                        <a routerLink="/orders" class="dropdown-item">
+                            <i class="fa fa-history me-3"></i> View orders
+                        </a>
+                    </li>
+                    <div class="dropdown-divider"></div>
+                    <li class="py-1">
+                        <a (click)="accountService.logout()" class="dropdown-item">
+                            <i class="fa fa-sign-out me-3"></i> Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </ng-container>
+    
+    </div>
+</nav>
+
+<!-- Navbar End -->
